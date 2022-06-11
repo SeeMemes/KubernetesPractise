@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata: 
+  name: webapp-deployment
+  labels:
+    app: web
+    env: test
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: web
+  template:
+    metadata:
+      labels:
+        app: web
+    spec:
+      containers:
+      - name: webapp
+        image: seememes/web:1.0.0
+        imagePullPolicy: IfNotPresent
